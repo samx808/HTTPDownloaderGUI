@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
@@ -32,6 +34,14 @@ public class GUI {
 		Shell shell = new Shell();
 		shell.setSize(900, 345);
 		shell.setText("HTTP Downloader");
+		shell.addDisposeListener(new DisposeListener() {
+			
+			@Override
+			public void widgetDisposed(DisposeEvent disposeEvent) {
+				System.exit(0);
+				
+			}
+		});
 		
 		Label lblUrlToDownload = new Label(shell, SWT.NONE);
 		lblUrlToDownload.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
