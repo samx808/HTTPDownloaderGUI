@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.graphics.Point;
 
 public class GUI {
 	private static Text textURL;
@@ -36,7 +37,10 @@ public class GUI {
 	public GUI() {
 		Display display = Display.getDefault();
 		Shell shell = new Shell();
-		shell.setSize(700, 110);
+		shell.setImage(SWTResourceManager.getImage(GUI.class, "/res/ico.png"));
+		shell.setMaximumSize(new Point(800, 200));
+		shell.setMinimumSize(new Point(500, 120));
+		shell.setSize(700, 130);
 		shell.setText("HTTP Downloader");
 		shell.addDisposeListener(new DisposeListener() {
 			
@@ -49,11 +53,12 @@ public class GUI {
 		shell.setLayout(new GridLayout(3, false));
 		
 		Label lblUrlToDownload = new Label(shell, SWT.NONE);
+		lblUrlToDownload.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, true, 1, 1));
 		lblUrlToDownload.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
 		lblUrlToDownload.setText("URL to Download from:");
 		
 		textURL = new Text(shell, SWT.BORDER);
-		GridData gd_textURL = new GridData(SWT.FILL, SWT.CENTER, true, false, 2, 1);
+		GridData gd_textURL = new GridData(SWT.FILL, SWT.CENTER, true, true, 2, 1);
 		gd_textURL.widthHint = 153;
 		textURL.setLayoutData(gd_textURL);
 		textURL.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
@@ -76,11 +81,12 @@ public class GUI {
 		  });
 		
 		Label lbllocaldir = new Label(shell, SWT.NONE);
+		lbllocaldir.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, true, 1, 1));
 		lbllocaldir.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
 		lbllocaldir.setText("File Name to save:");
 		
 		textLocalDir = new Text(shell, SWT.BORDER);
-		textLocalDir.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		textLocalDir.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 1, 1));
 		textLocalDir.setFont(SWTResourceManager.getFont("Segoe UI", 11, SWT.NORMAL));
 		textLocalDir.addTraverseListener(new TraverseListener()
 		  {
@@ -101,7 +107,7 @@ public class GUI {
 		  });
 		
 		Button btnDownload = new Button(shell, SWT.NONE);
-		GridData gd_btnDownload = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		GridData gd_btnDownload = new GridData(SWT.LEFT, SWT.CENTER, false, true, 1, 1);
 		gd_btnDownload.widthHint = 97;
 		btnDownload.setLayoutData(gd_btnDownload);
 		btnDownload.setFont(SWTResourceManager.getFont("Segoe UI", 12, SWT.NORMAL));
